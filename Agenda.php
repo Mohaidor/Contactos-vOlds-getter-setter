@@ -27,36 +27,6 @@ class Agenda
         }
     }
 
-
-
-
-    //Setters y getters CLÁSICOS
-    public function getArrayContactos()
-    {
-        return $this->arrayContactos;
-    }
-    public function setArrayContactos($arrayContactos)
-    {
-        $this->arrayContactos = $arrayContactos;
-    }
-    //Método que añade un contacto al array de contactos
-    public function addContact(Contacto $cont)
-    {
-        //Si se introduce un contacto con id duplicado no sobrescribe el que hay
-        if (key_exists($cont->getId(), $this->arrayContactos)) {
-            //Si ya existe la clave del contacto en el array sale
-            return;
-        }
-        //Añade como array asociativo el id como key y como valor un objeto de la clase Contacto
-        $this->arrayContactos[$cont->getId()] = $cont;
-    }
-    //Método que elimina un contacto mediante el id
-    public function deleteContact($id)
-    {
-        //Elimina el contacto en el id que es la key en el array
-        unset($this->arrayContactos[$id]);
-    }
-
     //Clone mágico
     public function __clone()
     {
@@ -67,6 +37,28 @@ class Agenda
             $this->arrayContactos[$contacto->Id] = clone $contacto;
         }
     }
+
+    //Método que añade un contacto al array de contactos
+    public function addContact(Contacto $cont)
+    {
+        //Si se introduce un contacto con id duplicado no sobrescribe el que hay
+        if (key_exists($cont->Id, $this->arrayContactos)) {
+            //Si ya existe la clave del contacto en el array sale
+            return;
+        }
+        //Añade como array asociativo el id como key y como valor un objeto de la clase Contacto
+        $this->arrayContactos[$cont->Id] = $cont;
+    }
+
+
+    //Método que elimina un contacto mediante el id
+    public function deleteContact($id)
+    {
+        //Elimina el contacto en el id que es la key en el array
+        unset($this->arrayContactos[$id]);
+    }
+
+
     //Método que retorna los contactos en formato elementos de una lista 
     public function mostrarLista()
     {
@@ -87,9 +79,9 @@ class Agenda
         $cadena = "";
         foreach ($this->arrayContactos as $contacto) {
             $cadena .= "<tr>" .
-                "<td>" . $contacto->getId() . "</td>" .
-                "<td>" . $contacto->getNombre() . "</td>" .
-                "<td>" . $contacto->getTelefono() . "</td>" .
+                "<td>" . $contacto->Id . "</td>" .
+                "<td>" . $contacto->Nombre . "</td>" .
+                "<td>" . $contacto->Telefono . "</td>" .
                 "</tr>";
         }
         return $cadena;

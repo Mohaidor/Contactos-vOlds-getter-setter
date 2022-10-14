@@ -19,12 +19,12 @@
     //Imprimir el contacto1 con el método mágico __toString() que se llama solo
     echo "Contacto1: <br><p><b>$contacto1</b></p>";
     //Ahora voy a modificar el nombre de $contacto1 mediante setter
-    $contacto1->setNombre("Pepe");
+    $contacto1->Nombre  = "Pepe";
     echo 'Modificando el nombre del contacto a Pepe...';
     //Muestra contacto1 después de modificar
     echo "<p><b>$contacto1</b></p>";
     //Muestra el nombre contacto después de modificar con el getter
-    echo "<p>Nombre después de modificar: " . $contacto1->getNombre() . "</p>";
+    echo "<p>Nombre después de modificar: " . $contacto1->Nombre . "</p>";
 
     ?>
 </body>
